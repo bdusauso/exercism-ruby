@@ -19,11 +19,9 @@ module Complement
   private
 
   def self.of(type, sequence)
-    res_sequence = []
-    sequence.chars.each do |char|
+    res_sequence = sequence.chars.map do |char|
       from_nucleotides, to_nucleotides = DIRECTIONS[type]
-      index = from_nucleotides.index(char)
-      res_sequence << to_nucleotides[index]
+      to_nucleotides[from_nucleotides.index(char)]
     end
     res_sequence.join('')
   end
