@@ -19,10 +19,8 @@ class Integer
   def to_roman
     num = self
     ROMAN_CONVERSION.keys.sort.reverse.reduce("") do |roman, arabic|
-      while num >= arabic
-        roman << ROMAN_CONVERSION[arabic]
-        num -= arabic
-      end
+      (num / arabic).times { roman << ROMAN_CONVERSION[arabic] }
+      num %= arabic
       roman
     end
   end
