@@ -6,11 +6,11 @@ class Squares
   end
 
   def square_of_sums
-    1.upto(number).reduce(:+) ** 2
+    @sum ||= 1.upto(number).reduce(:+) ** 2
   end
 
   def sum_of_squares
-    1.upto(number).map {|n| n ** 2}.reduce(:+)
+    @squares ||= 1.upto(number).map {|n| n ** 2}.reduce(:+)
   end
 
   def difference
